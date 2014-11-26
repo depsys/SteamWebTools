@@ -5,7 +5,6 @@
 // @include	https://steamcommunity.com/*
 // ==/UserScript==
 
-
 var url = document.URL;
 
 var CDN = '//depsys.github.io/SteamWebTools/';
