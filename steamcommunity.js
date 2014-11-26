@@ -288,8 +288,8 @@ function inventoryPageInit(){
 		var PopulateMarketActions_orig = window.PopulateMarketActions;
 		window.PopulateMarketActions = function (elActions, item) {
 			var res = PopulateMarketActions_orig.apply(this, arguments);
-			$('#iteminfo1_item_actions').append('<br/>ClassID#: '+item.classid+'<br>Defindex#: '+item.app_data.def_index);
-			$('#iteminfo0_item_actions').append('<br/>ClassID#: '+item.classid+'<br>Defindex#: '+item.app_data.def_index);
+			$('#iteminfo1_item_actions').append('<br/>ClassID#: '+item.classid+' Defindex#: '+item.app_data.def_index);
+			$('#iteminfo0_item_actions').append('<br/>ClassID#: '+item.classid+' Defindex#: '+item.app_data.def_index);
 			if (!item.marketable) {
 				return res;
 			}
