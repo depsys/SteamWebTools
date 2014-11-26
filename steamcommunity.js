@@ -329,7 +329,7 @@ function inventoryPageInit(){
 	window.SelectInventoryFromUser = function(){
 		var appid = arguments[1];
 		var contextid = arguments[2];
-
+		$('#iteminfo1_item_actions').append(appid);
 		var inventory = window.UserYou.getInventory( appid, contextid );
 		if (window.localStorage.hideDupItems && !inventory._hiddenDup) {
 
@@ -338,7 +338,7 @@ function inventoryPageInit(){
 				inventory.BuildItemElement_old = inventory.BuildItemElement;
 				inventory.BuildItemElement = function(){
 					var el = inventory.BuildItemElement_old.apply(this, arguments);
-					el.innerHTML+='<div class="itemcount">x'+el.rgItem._amount+'def#:'+el.rgItem.classid+'</div>';
+					el.innerHTML+='<div class="itemcount">x'+el.rgItem._amount+'</div>';
 					return el;
 				}
 			}
