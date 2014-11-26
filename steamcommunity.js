@@ -338,7 +338,7 @@ function inventoryPageInit(){
 				inventory.BuildItemElement_old = inventory.BuildItemElement;
 				inventory.BuildItemElement = function(){
 					var el = inventory.BuildItemElement_old.apply(this, arguments);
-					el.innerHTML+='<div class="itemcount">x'+el.rgItem._amount+'def#:'+el.rgItem.defindex+'</div>';
+					el.innerHTML+='<div class="itemcount">x'+el.rgItem._amount+'def#:'+el.rgItem.classid+'</div>';
 					return el;
 				}
 			}
