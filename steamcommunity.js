@@ -129,7 +129,7 @@ function inventoryPageInit(){
 		ajaxTarget.classid = item.classid;
 		ajaxTarget.giftId = itemid;
 		ajaxTarget.giftName = encodeURIComponent(item.name);
-
+		ajaxTarget.defindex = item.defindex;
 		includeJS('http://v1t.su/projects/steam/class-sub.php?jsonp=setSubID&get=sub&value='+item.classid);
 	}
 
