@@ -289,6 +289,7 @@ function inventoryPageInit(){
 		window.PopulateMarketActions = function (elActions, item) {
 			var res = PopulateMarketActions_orig.apply(this, arguments);
 			$('#iteminfo1_item_actions').append('<br/>'+item.classid);
+			$('#iteminfo0_item_actions').append('<br/>'+item.classid);
 			if (!item.marketable) {
 				return res;
 			}
