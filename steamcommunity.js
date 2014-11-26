@@ -288,8 +288,8 @@ function inventoryPageInit(){
 		var PopulateMarketActions_orig = window.PopulateMarketActions;
 		window.PopulateMarketActions = function (elActions, item) {
 			var res = PopulateMarketActions_orig.apply(this, arguments);
-			$('#iteminfo1_item_actions').append('<br/>ClassID#: <span class="defindex">'+item.classid+'</span> Defindex#: <span class="defindex">'+item.app_data.def_index+'</span>');
-			$('#iteminfo0_item_actions').append('<br/>ClassID#: <span class="defindex">'+item.classid+'</span> Defindex#: <span class="defindex">'+item.app_data.def_index+'</span>');
+			$('#iteminfo1_item_actions').append('<br/>ClassID#: <span style="color:blue">'+item.classid+'</span> Defindex#: <span style="color:red">'+item.app_data.def_index+'</span>');
+			$('#iteminfo0_item_actions').append('<br/>ClassID#: <span style="color:blue">'+item.classid+'</span> Defindex#: <span style="color:red">'+item.app_data.def_index+'</span>');
 			if (!item.marketable) {
 				return res;
 			}
@@ -547,7 +547,7 @@ function profileNewPageInit(){
 
 	// Styles
 	document.body.insertAdjacentHTML("afterBegin",
-		'<style>.badge{border-radius:3px;box-shadow:1px 1px 0px 0px #1D1D1D;font-size:.7em;padding:3px;position:relative;top:-2px}#swt_info{position:absolute;top:201px}.defindex{color: red;}</style>'
+		'<style>.badge{border-radius:3px;box-shadow:1px 1px 0px 0px #1D1D1D;font-size:.7em;padding:3px;position:relative;top:-2px}#swt_info{position:absolute;top:201px}</style>'
 	);
 
 
