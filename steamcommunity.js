@@ -129,7 +129,7 @@ function inventoryPageInit(){
 		ajaxTarget.classid = item.classid;
 		ajaxTarget.giftId = itemid;
 		ajaxTarget.giftName = encodeURIComponent(item.name);
-		ajaxTarget.defindex = item.defindex;
+
 		includeJS('http://v1t.su/projects/steam/class-sub.php?jsonp=setSubID&get=sub&value='+item.classid);
 	}
 
@@ -288,6 +288,7 @@ function inventoryPageInit(){
 		var PopulateMarketActions_orig = window.PopulateMarketActions;
 		window.PopulateMarketActions = function (elActions, item) {
 			var res = PopulateMarketActions_orig.apply(this, arguments);
+			$('#iteminfo1_item_actions').append('<br/>'+item.classid);
 			if (!item.marketable) {
 				return res;
 			}
@@ -329,7 +330,7 @@ function inventoryPageInit(){
 	window.SelectInventoryFromUser = function(){
 		var appid = arguments[1];
 		var contextid = arguments[2];
-		$('#iteminfo1_item_actions').append(appid);
+		
 		var inventory = window.UserYou.getInventory( appid, contextid );
 		if (window.localStorage.hideDupItems && !inventory._hiddenDup) {
 
