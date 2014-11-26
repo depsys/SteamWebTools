@@ -288,7 +288,7 @@ function inventoryPageInit(){
 		var PopulateMarketActions_orig = window.PopulateMarketActions;
 		window.PopulateMarketActions = function (elActions, item) {
 			var res = PopulateMarketActions_orig.apply(this, arguments);
-			$('#iteminfo1_item_descriptors').apend('<div class="descriptor"><br/>ClassID#: <span style="color:green">'+item.classid+'</span> Defindex#: <span style="color:red">'+item.app_data.def_index+'</span></div>');
+			$('#iteminfo1_item_descriptors').append('<div class="descriptor"><br/>ClassID#: <span style="color:green">'+item.classid+'</span> Defindex#: <span style="color:red">'+item.app_data.def_index+'</span></div>');
 			$('#iteminfo0_item_descriptors').append('<div class="descriptor"><br/>ClassID#: <span style="color:green">'+item.classid+'</span> Defindex#: <span style="color:red">'+item.app_data.def_index+'</span></div>');
 			if (!item.marketable) {
 				return res;
