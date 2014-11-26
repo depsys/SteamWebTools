@@ -288,8 +288,9 @@ function inventoryPageInit(){
 		var PopulateMarketActions_orig = window.PopulateMarketActions;
 		window.PopulateMarketActions = function (elActions, item) {
 			var res = PopulateMarketActions_orig.apply(this, arguments);
-			$('#iteminfo1_item_name').prepend('<div class="descriptor_def">ClassID#: <span style="color:green">'+item.classid+'</span>, Defindex#: <span style="color:red">'+item.app_data.def_index+'</span><br/></div>');
-			$('#iteminfo0_item_name').prepend('<div class="descriptor_def">ClassID#: <span style="color:green">'+item.classid+'</span>, Defindex#: <span style="color:red">'+item.app_data.def_index+'</span><br/></div>');
+			$('#descriptorDef').remove();
+			$('#iteminfo1_item_name').befor('<div class="descriptorDef">ClassID#: <span style="color:green">'+item.classid+'</span>, Defindex#: <span style="color:red">'+item.app_data.def_index+'</span><br/></div>');
+			$('#iteminfo0_item_name').befor('<div class="descriptorDef">ClassID#: <span style="color:green">'+item.classid+'</span>, Defindex#: <span style="color:red">'+item.app_data.def_index+'</span><br/></div>');
 			if (!item.marketable) {
 				return res;
 			}
