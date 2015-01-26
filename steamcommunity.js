@@ -264,7 +264,7 @@ function inventoryPageInit(){
 					});
 				}
 			}
-		} else
+		} /*else
 		// tf2 items
 		//need fix link
 		if(window.g_ActiveInventory && (window.g_ActiveInventory.appid == 440)){
@@ -276,7 +276,7 @@ function inventoryPageInit(){
 				});
 
 			}
-		}
+		}*/
 		
 		return BuildHover_orig.apply(this, arguments);
 	}
