@@ -319,6 +319,10 @@ function inventoryPageInit(){
 
 			return res;
 		}
+	} else {
+		$('.descriptorDef').remove();
+		$('#iteminfo1_item_name').before('<div class="descriptorDef">ClassID#: <span style="color:green">'+item.classid+'</span>, Defindex#: <span style="color:red">'+item.app_data.def_index+'</span><br/></div>');
+		$('#iteminfo0_item_name').before('<div class="descriptorDef">ClassID#: <span style="color:green">'+item.classid+'</span>, Defindex#: <span style="color:red">'+item.app_data.def_index+'</span><br/></div>');		
 	}
 
 	//// Hide Duplicates
