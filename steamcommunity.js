@@ -127,6 +127,7 @@ function inventoryPageInit(){
 		var item = window.UserYou.rgContexts[753][1].inventory.rgInventory[itemid];
 
 		ajaxTarget.classid = item.classid;
+		ajaxTarget.defindex = item.defindex;
 		ajaxTarget.giftId = itemid;
 		ajaxTarget.giftName = encodeURIComponent(item.name);
 
@@ -341,7 +342,8 @@ function inventoryPageInit(){
 	window.SelectInventoryFromUser = function(){
 		var appid = arguments[1];
 		var contextid = arguments[2];
-		
+		var bd=window.localStorage.hideDupItemsByDefindex;
+
 		var inventory = window.UserYou.getInventory( appid, contextid );
 		if (window.localStorage.hideDupItems && !inventory._hiddenDup) {
 
@@ -377,15 +379,28 @@ function inventoryPageInit(){
 					for ( var j in items ){
 						if(items[j]._is_stackable || items[j].is_stackable)
 							continue;
-						if(newItems[items[j].classid]){
-							newItems[items[j].classid]._amount +=1;
-							newItems[items[j].classid]._ids.push(items[j].id);
-							delete items[j];
-						} else {
-							items[j]._is_stackable = true;
-							items[j]._amount = 1;
-							items[j]._ids = [items[j].id];
-							newItems[items[j].classid] = items[j];
+						if (bd){
+							if(newItems[items[j].app_data.def_index]){
+								newItems[items[j].app_data.def_index]._amount +=1;
+								newItems[items[j].app_data.def_index]._ids.push(items[j].id);
+								delete items[j];
+							} else {
+								items[j]._is_stackable = true;
+								items[j]._amount = 1;
+								items[j]._ids = [items[j].id];
+								newItems[items[j].app_data.def_index] = items[j];
+							}
+						}else{
+							if(newItems[items[j].classid]){
+								newItems[items[j].classid]._amount +=1;
+								newItems[items[j].classid]._ids.push(items[j].id);
+								delete items[j];
+							} else {
+								items[j]._is_stackable = true;
+								items[j]._amount = 1;
+								items[j]._ids = [items[j].id];
+								newItems[items[j].classid] = items[j];
+							}
 						}
 					}
 				}
@@ -398,13 +413,25 @@ function inventoryPageInit(){
 
 
 	var HTMLHideDup = '<input type="checkbox" name="hidedup" onchange="window.onchangehidedup(event)" '+((window.localStorage.hideDupItems)?'checked="true"':'')+'/>Прятать дубликаты, показывая кол-во';
+	var HTMLHIdeByDefindex='<input type="checkbox" name="hidebydefindex" onchange="window.onchangehidebydefindex(event)" '+((window.localStorage.hideDupItemsByDefindex)?'checked="true"':'')+'/>defindex';
 	document.getElementById('inventory_pagecontrols').insertAdjacentHTML("beforeBegin", HTMLHideDup);
+	document.getElementById('inventory_pagecontrols').insertAdjacentHTML("beforeBegin", HTMLHIdeByDefindex);
 
 	window.onchangehidedup = function(e){
 		if(e.target.checked){
 			window.localStorage.hideDupItems = 1
 		} else {
 			window.localStorage.removeItem('hideDupItems')
+		}
+
+		window.location.reload();
+	};
+
+	window.onchangehidebydefindex = function(e){
+		if(e.target.checked){
+			window.localStorage.hideDupItemsByDefindex = 1
+		} else {
+			window.localStorage.removeItem('hideDupItemsByDefindex')
 		}
 
 		window.location.reload();
