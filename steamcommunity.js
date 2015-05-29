@@ -303,7 +303,7 @@ function inventoryPageInit(){
 				type: 'GET',
 				data: {
 					country: window.g_strCountryCode,
-					currency: typeof(window.g_rgWalletInfo) != 'undefined' ? window.g_rgWalletInfo['wallet_currency'] : 1,
+					currency: typeof(window.g_rgWalletInfo) != 'undefined' ? window.g_rgWalletInfo['wallet_currency'] : 5,
 					appid: item.appid,
 					market_hash_name: market_hash_name
 				}
